@@ -94,7 +94,13 @@ public class Order implements Serializable {
 		return items;
 	}
 	
-	
+	public Double getTotal() {
+		double sum = 0.0;
+		for (OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
+	}
 	
 	public Payment getPayment() {
 		return payment;
@@ -108,6 +114,8 @@ public class Order implements Serializable {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+	
+	
 
 	@Override
 	public boolean equals(Object obj) {
